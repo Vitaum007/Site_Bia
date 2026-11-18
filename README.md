@@ -57,7 +57,3 @@ src/
 public/              # Fontes locais e imagens
 tests/               # Testes estruturais e de paridade i18n
 ```
-
-## Adicionando novos cards de mídia
-
-Edite `src/content/media.ts` adicionando um novo objeto em `mediaItems` com `id` único, `category`, `outlet`, `title` (`pt` e `en`), `description` (`pt` e `en`), `url` e `featured: true` (para aparecer no carrossel da Home) ou `false` (para aparecer apenas em `/midia`). Em seguida, valide com `npm test` e `npm run lint`.
