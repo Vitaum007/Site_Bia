@@ -1,0 +1,126 @@
+/* =========================================================
+   PÁGINAS DE ERRO E 404 (Identidade Editorial + Ilustração)
+   ========================================================= */
+.status-page {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(34rem, 78vh, 52rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(7rem, 12vw, 9.5rem) clamp(4.5rem, 8vw, 6.5rem);
+}
+
+.status-corner {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.status-corner-tl {
+  top: 0;
+  left: 0;
+  width: clamp(140px, 20vw, 240px);
+  height: auto;
+}
+
+.status-corner-br {
+  right: 0;
+  bottom: 0;
+  width: clamp(160px, 24vw, 270px);
+  height: auto;
+}
+
+.status-page-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.status-illustration {
+  width: clamp(150px, 22vw, 195px);
+  height: auto;
+  margin-bottom: 0.75rem;
+}
+
+.status-code {
+  font-family: var(--font-display);
+  font-size: clamp(4.75rem, 12vw, 7.25rem);
+  line-height: 0.96;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.status-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 400;
+  color: var(--color-primary);
+  margin-bottom: 0.85rem;
+}
+
+.status-page-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 28rem;
+}
+
+.status-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem 1.25rem;
+  margin-top: 2rem;
+}
+
+.status-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.status-pill-btn:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.status-pill-arrow {
+  transition: transform 0.2s ease;
+}
+
+.status-pill-btn:hover .status-pill-arrow {
+  transform: translateX(3px);
+}
+
+.status-pill-btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.status-pill-btn-outline:hover {
+  background-color: rgba(51, 75, 137, 0.08);
+  border-color: var(--color-primary);
+}

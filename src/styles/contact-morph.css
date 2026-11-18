@@ -1,0 +1,24 @@
+/* =========================================================
+   CONTATO — Color Morphing a partir da mídia
+   ========================================================= */
+.contact-editorial-section {
+  /* --morph-p (0..1) vem de ContactTransition; sem ele o contato já nasce azul claro */
+  --mp: var(--morph-p, 1);
+  --w: clamp(0, calc((var(--mp) - 0.55) / 0.25), 1); /* o título só clareia quando o fundo já está azul */
+  z-index: 3;
+  background-color: color-mix(in oklab, var(--bg-primary) calc((1 - var(--mp)) * 100%), var(--color-secondary));
+  color: var(--contact-ink);
+}
+/* Revelação coordenada: --contact-p (0..1) vem de ContactTransition; ausente = estado final */
+.contact-reveal {
+  --d: 0.3;
+  --l: clamp(0, calc((var(--contact-p, 1) - var(--d)) / 0.35), 1);
+  opacity: calc(0.3 + 0.7 * var(--l));
+  translate: 0 calc((1 - var(--l)) * 14px);
+}
+
+.contact-reveal--title { --d: 0.22; }
+.contact-reveal--text { --d: 0.36; }
+.contact-reveal--links { --d: 0.46; }
+.contact-reveal--card1 { --d: 0.42; }
+.contact-reveal--card2 { --d: 0.56; }

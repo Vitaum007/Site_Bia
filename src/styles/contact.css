@@ -1,0 +1,328 @@
+/* =========================================================
+   CONTATO & FECHAMENTO — ACOLHEDOR E MEMORÁVEL
+   ========================================================= */
+.contact-editorial-section {
+  position: relative;
+  overflow-x: clip; /* as estrelas podem passar da borda de um card sem gerar rolagem horizontal */
+  padding-block: var(--section-space);
+  --contact-ink: #16224A; /* texto pequeno sobre o azul claro (contraste 4,8:1) */
+  isolation: isolate;
+}
+
+/* Grão do Key Visual sobre o azul */
+.contact-editorial-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.contact-editorial-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+/* Introdução */
+.contact-intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-eyebrow {
+  color: var(--contact-ink);
+  letter-spacing: 0.16em;
+}
+
+.contact-title {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.9rem, 5.4vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.04;
+  color: color-mix(in oklab, var(--color-primary) calc((1 - var(--w)) * 100%), #FFFFFF);
+  text-wrap: balance;
+}
+
+.contact-lead {
+  margin-top: 1.5rem;
+  max-width: 38ch;
+  font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+  line-height: 1.7;
+  color: var(--contact-ink);
+}
+
+.contact-social {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(22, 34, 74, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 38ch;
+}
+
+.contact-social-heading {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--contact-ink);
+}
+
+.contact-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(22, 34, 74, 0.45);
+  color: var(--contact-ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: border-color 0.25s ease, gap 0.25s ease;
+}
+
+.contact-social-link:hover {
+  border-bottom-color: var(--color-rose);
+  gap: 0.75rem;
+}
+
+.contact-social-link:focus-visible {
+  outline: 2px solid var(--contact-ink);
+  outline-offset: 4px;
+}
+/* Cards: mesma construcao, cores diferentes */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+  align-items: stretch;
+}
+
+.contact-card {
+  --card-bg: #F8F5F0;
+  --card-eyebrow: var(--color-primary);
+  --card-title: var(--color-primary);
+  --card-text: var(--text-muted);
+  --card-note: var(--color-primary);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.6rem, 2.4vw, 2.25rem);
+  border-radius: 14px;
+  background-color: var(--card-bg);
+  box-shadow:
+    inset 0 0 0 1px rgba(51, 75, 137, 0.08),
+    0 18px 36px -22px rgba(20, 30, 62, 0.5);
+}
+
+.contact-card--press {
+  --card-bg: var(--color-rose);
+  --card-eyebrow: var(--color-primary-dark);
+  --card-title: var(--color-primary);
+  --card-text: #2A2F4F;
+  --card-note: var(--color-primary-dark);
+}
+
+.contact-card-eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-eyebrow);
+}
+
+.contact-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--card-title);
+  text-wrap: balance;
+}
+
+.contact-card-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--card-text);
+}
+
+.contact-card-note {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--card-note);
+}
+
+/* Ação: selo oval com costura tracejada (branco e azul; preenchimento azul ao passar o mouse).
+   Estilo único de todos os botões do site, exceto os do Hero. No card, fica sempre no pé */
+.contact-card-action,
+.btn-editorial-primary,
+.btn-editorial-outline {
+  --action-bg: #FFFFFF;
+  --action-hover: var(--color-primary);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 4.25rem;
+  padding: 0.9rem 2.6rem;
+  border-radius: 50%;
+  border: 0;
+  background-color: var(--action-bg);
+  box-shadow: 0 8px 18px -10px rgba(20, 30, 62, 0.55);
+  color: var(--color-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* A costura: linha tracejada interna, como no selo de referência */
+.contact-card-action::before,
+.btn-editorial-primary::before,
+.btn-editorial-outline::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1.5px dashed currentColor;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* No card o selo ocupa a largura útil e fica no pé */
+.contact-card-action {
+  display: flex;
+  margin-top: auto;
+  min-height: 5.25rem;
+  padding: 1rem 15%;
+}
+
+.contact-card-arrow {
+  flex: none;
+  transition: transform 0.3s ease;
+}
+
+.contact-card-action:hover,
+.btn-editorial-primary:hover,
+.btn-editorial-outline:hover {
+  background-color: var(--action-hover);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.contact-card-action:hover .contact-card-arrow {
+  transform: translateX(4px);
+}
+
+.contact-card-action:focus-visible,
+.btn-editorial-primary:focus-visible,
+.btn-editorial-outline:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 4px;
+}
+
+.contact-card--press .contact-card-action:focus-visible {
+  outline-color: var(--color-primary);
+}
+/* Estrelas-adesivo: poucas, de tamanhos intencionais; fora dos textos e dos botões */
+.contact-star {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.contact-star .star-body {
+  fill: var(--color-rose);
+  stroke: var(--color-rose-deep);
+  stroke-width: 2;
+}
+
+.contact-star .star-stitch {
+  fill: none;
+  stroke: var(--color-rose-deep);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.contact-star--md {
+  top: 0.35rem;
+  right: 8%;
+  width: 38px;
+  transform: rotate(-12deg);
+}
+
+/* No card rosa a estrela perde o contraste: contorno azul */
+.contact-card--press .contact-star .star-body {
+  fill: #FAF8F5;
+  stroke: var(--color-primary);
+}
+
+.contact-card--press .contact-star .star-stitch {
+  stroke: var(--color-primary);
+}
+
+.contact-star--lg {
+  top: -22px;
+  right: -14px;
+  width: 54px;
+  transform: rotate(14deg);
+}
+
+.contact-star--sm {
+  bottom: -14px;
+  left: 22px;
+  width: 28px;
+  transform: rotate(-10deg);
+}
+
+@media (max-width: 1024px) {
+  .contact-title {
+    font-size: clamp(2.7rem, 8vw, 4rem);
+  }
+
+  .contact-lead,
+  .contact-social {
+    max-width: 52ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-star--md {
+    top: -0.25rem;
+    right: 2%;
+    width: 30px;
+  }
+
+  .contact-star--lg {
+    top: -16px;
+    right: 8px;
+    width: 42px;
+  }
+
+  .contact-star--sm {
+    display: none;
+  }
+}

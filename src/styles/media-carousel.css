@@ -1,0 +1,270 @@
+/* =========================================================
+   NA MÍDIA — VITRINE DE VÍDEOS EM ESTILO SCRAPBOOK
+   ========================================================= */
+.media-showcase {
+  overflow-x: clip; /* os adereços podem encostar na borda sem gerar rolagem horizontal */
+}
+
+.media-showcase > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.media-showcase .media-archive-header {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.media-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.media-lines path {
+  fill: none;
+  stroke: var(--color-rose-deep);
+  stroke-opacity: 0.55;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+
+/* @biacarone nas laterais, só em telas largas */
+.media-side-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-block: 1.25rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.media-side-handle--left { left: 0; }
+.media-side-handle--right { right: 0; }
+
+.media-side-handle span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  opacity: 0.45;
+}
+
+@media (min-width: 1280px) {
+  .media-side-handle { display: flex; }
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Carrossel por páginas: as páginas ficam empilhadas na mesma célula da grade (a altura é a da maior) */
+.carousel-viewport {
+  --gap: clamp(1.25rem, 2.6vw, 2.25rem);
+  /* Só o eixo horizontal é contido (as páginas entram e saem pelas laterais); na vertical o
+     card em foco e sua descrição podem passar da faixa sem serem cortados */
+  overflow-x: clip;
+  overflow-y: visible;
+  position: relative;
+  z-index: 4;
+  padding: 2.25rem 1.5rem 2.75rem;
+  touch-action: pan-y; /* o gesto horizontal é do carrossel; a rolagem vertical segue livre */
+}
+
+.carousel-stage {
+  display: grid;
+}
+
+.carousel-page {
+  grid-area: 1 / 1;
+  display: flex;
+  justify-content: center; /* o último grupo, se menor, fica centralizado */
+  gap: var(--gap);
+  will-change: transform;
+}
+.video-card {
+  flex: 0 0 calc((100% - (var(--per, 3) - 1) * var(--gap)) / var(--per, 3));
+  min-width: 0;
+  position: relative;
+  background-color: var(--color-primary);
+  border-radius: 16px;
+  padding: 18px 18px 1.6rem;
+  box-shadow: 6px 8px 22px -8px rgba(51, 75, 137, 0.45);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    opacity 0.4s ease,
+    filter 0.4s ease,
+    border-radius 0.4s ease;
+}
+
+/* Grão do Key Visual sobre o azul */
+.video-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Card em foco (hover, teclado ou toque): se aproxima por transform, sem alterar a grade */
+.video-card.is-active {
+  z-index: 6;
+  transform: scale(1.045);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 10px 22px 40px -14px rgba(30, 45, 84, 0.55);
+}
+
+/* Os vizinhos recuam discretamente, sem escurecer demais */
+.carousel-page[data-has-active] .video-card:not(.is-active) {
+  opacity: 0.8;
+  filter: saturate(0.9);
+}
+
+/* Etiqueta oval rosa de scrapbook */
+.video-tag {
+  position: absolute;
+  top: -18px;
+  left: -12px;
+  z-index: 3;
+  padding: 0.45rem 1.25rem;
+  background-color: var(--color-rose);
+  border: 2px dashed var(--color-primary);
+  border-radius: 50px;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  transform: rotate(-6deg);
+  box-shadow: 3px 3px 8px rgba(40, 40, 40, 0.15);
+}
+
+.video-card[data-variant="1"] .video-tag {
+  left: auto;
+  right: -12px;
+  background-color: #FBF6F2;
+  transform: rotate(4deg);
+}
+
+.video-card[data-variant="2"] .video-tag {
+  transform: rotate(-3deg);
+}
+
+.video-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #1E2D54;
+}
+
+.video-thumb-link:focus-visible {
+  outline: 3px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+.video-thumb img {
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.video-card.is-active .video-thumb img {
+  opacity: 1;
+}
+
+.video-thumb-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 28% 18%, rgba(101, 147, 196, 0.38), transparent 60%),
+    radial-gradient(ellipse at 82% 92%, rgba(227, 183, 206, 0.3), transparent 55%),
+    linear-gradient(135deg, #243561, #1A2445);
+}
+
+/* Navegação: setas e pontos (acima de .video-detail para não serem cobertos no mobile) */
+.carousel-controls {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carousel-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(51, 75, 137, 0.35);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background-color: var(--color-rose);
+  border-color: var(--color-primary);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.carousel-btn:focus-visible,
+.dot:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(51, 75, 137, 0.25);
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: -17px;
+}
+
+.dot[aria-current="true"] {
+  background-color: var(--color-primary);
+}

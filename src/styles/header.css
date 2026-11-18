@@ -1,0 +1,290 @@
+/* =========================================================
+   CABEÇALHO REFINADO
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-block: 1.1rem;
+}
+
+/* Recolhido: a barra some e só o botão compacto recebe cliques */
+.site-header[data-collapsed='true'] {
+  pointer-events: none;
+}
+
+.site-header[data-collapsed='true'] .header-shell {
+  pointer-events: auto;
+}
+
+/* Fundo da barra completa (some ao recolher) */
+.header-bg {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(239, 235, 232, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hairline);
+  pointer-events: none;
+}
+
+.header-grid {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Casca que se recolhe em direção ao canto superior direito: a largura encolhe a partir da esquerda */
+.header-shell {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: none;
+  height: 3.25rem;
+  overflow: clip;
+  overflow-clip-margin: 6px;
+}
+
+.header-row {
+  flex: none;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  height: 100%;
+  width: 100%;
+  /* Barra completa: o botão de recolher ocupa o fim da linha, sem competir com o CTA */
+  padding-right: calc(52px + 0.25rem);
+}
+
+/* Botão de menu: fixo no canto direito da casca */
+.header-menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.header-menu-btn:hover {
+  background-color: rgba(51, 75, 137, 0.08);
+}
+
+.header-menu-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -5px;
+}
+
+.header-menu-icon {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Painel de navegação em telas pequenas */
+.header-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 14rem;
+  padding: 0.75rem 1.25rem 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--bg-primary);
+  box-shadow: 0 14px 30px -22px rgba(30, 45, 84, 0.45);
+  pointer-events: auto;
+}
+
+.header-panel ul {
+  list-style: none;
+}
+
+.header-panel-link {
+  display: block;
+  padding-block: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.header-panel-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.header-panel-link[aria-current='page'] {
+  font-weight: 600;
+}
+
+.header-panel-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.header-panel .header-lang-panel {
+  display: none;
+}
+
+.header-panel-cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.brand-signature {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1;
+  color: var(--color-primary);
+  letter-spacing: -0.015em;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  margin-top: 0.28rem;
+  text-transform: uppercase;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.header-nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.2vw, 2.25rem);
+  list-style: none;
+}
+
+.header-nav-link {
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  padding-block: 0.6rem;
+}
+
+.header-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.header-nav-link:hover,
+.header-nav-link[aria-current='page'] {
+  color: var(--color-primary);
+}
+
+.header-nav-link:hover::after,
+.header-nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.header-lang-switch a {
+  color: var(--text-light);
+  transition: color 0.2s ease;
+  padding: 0.5rem;
+}
+
+.header-lang-switch a:hover,
+.header-lang-switch a.active {
+  color: var(--color-primary);
+}
+
+.header-lang-switch a:not(.active) {
+  font-weight: 500;
+}
+
+.header-lang-divider {
+  color: rgba(40, 40, 40, 0.2);
+  font-weight: 300;
+}
+
+/* CTA do cabeçalho: botão preenchido em azul profundo, texto off-white */
+.header-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: var(--bg-primary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.header-pill-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.header-pill-btn:hover span[aria-hidden] {
+  transform: translateX(3px);
+}
+
+.header-pill-btn span[aria-hidden] {
+  transition: transform 0.25s ease;
+}
+
+.header-pill-btn:focus-visible,
+.header-nav-link:focus-visible,
+.header-lang-switch a:focus-visible,
+.brand-signature:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.header-pill-btn:focus-visible {
+  border-radius: 9999px;
+  outline-offset: 3px;
+}

@@ -1,0 +1,106 @@
+/* =========================================================
+   RESPONSIVIDADE E DISPOSITIVOS MÓVEIS
+   ========================================================= */
+@media (max-width: 1024px) {
+  .contact-editorial-layout,
+  .services-editorial-head,
+  .service-steps-editorial,
+  .footer-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .services-composition {
+    grid-template-columns: 1fr 360px;
+    gap: 1rem;
+  }
+}
+
+/* Tablet: a navegação cabe com espaçamento menor; abaixo disso fica só marca, idioma e CTA */
+@media (max-width: 900px) {
+  .header-nav {
+    display: none;
+  }
+
+  .header-row {
+    grid-template-columns: 1fr auto;
+    padding-right: calc(52px + 0.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-actions-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .services-composition {
+    grid-template-columns: 1fr;
+  }
+
+  .services-composition .postit {
+    order: -1;
+  }
+
+  .services-modalities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    padding-block: 0.8rem;
+  }
+
+  .header-actions {
+    gap: 0.75rem;
+  }
+
+  .brand-title {
+    font-size: 1.3rem;
+  }
+
+  .brand-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  .header-row {
+    gap: 0.6rem;
+  }
+
+  .header-lang-bar {
+    display: none;
+  }
+
+  .header-panel .header-lang-panel {
+    display: inline-flex;
+  }
+
+  .header-pill-btn {
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.76rem;
+  }
+}
+
+.brand-title,
+.brand-sub {
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Etiqueta sobre o papel: azul mais profundo para manter o contraste */
+.services-notebook .editorial-tag {
+  color: var(--color-primary);
+}

@@ -1,0 +1,364 @@
+/* =========================================================
+   HERO — TEXTO À ESQUERDA, FOTOGRAFIA DISSOLVIDA NO OFF-WHITE
+   A fotografia é uma camada de fundo da seção (sem moldura): uma máscara
+   de transparência a desfaz nas bordas esquerda e inferior.
+   ========================================================= */
+.hero-editorial {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 78px);
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-primary);
+  padding-block: clamp(3rem, 5vw, 4.5rem) clamp(2.5rem, 4vw, 3.5rem);
+  overflow: visible;
+}
+
+/* Reflexos de cor: ficam ATRÁS da fotografia e só aparecem onde ela se dissolve */
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 38% 46% at 52% 88%, rgba(101, 147, 196, 0.13) 0%, transparent 100%),
+    radial-gradient(ellipse 26% 32% at 96% 94%, rgba(227, 183, 206, 0.16) 0%, transparent 100%);
+}
+
+.hero-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(60%, 880px);
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 46%),
+    linear-gradient(to bottom, #000 0%, #000 50%, rgba(0, 0, 0, 0.5) 72%, transparent 90%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 46%),
+    linear-gradient(to bottom, #000 0%, #000 50%, rgba(0, 0, 0, 0.5) 72%, transparent 90%);
+  mask-composite: intersect;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  display: block;
+}
+
+.hero-editorial .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: min(560px, 48%);
+}
+
+.hero-intro-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.hero-intro-label .editorial-tag {
+  color: var(--color-primary);
+  letter-spacing: 0.14em;
+}
+
+.hero-eyebrow-line {
+  display: inline-block;
+  width: 44px;
+  height: 1px;
+  background-color: rgba(51, 75, 137, 0.32);
+}
+
+.display-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.1vw, 3.9rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: -0.018em;
+}
+
+.display-hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: inherit;
+}
+
+.hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  max-width: 44ch;
+}
+
+.hero-actions-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.btn-pill-primary,
+.btn-pill-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-pill-primary {
+  background-color: var(--color-primary);
+  color: #FAF8F5;
+  border: 1px solid var(--color-primary);
+}
+
+.btn-pill-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-pill-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid rgba(51, 75, 137, 0.35);
+}
+
+.btn-pill-secondary:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(51, 75, 137, 0.05);
+}
+
+
+/* Superfície líquida ligada ao scroll (LiquidTransition.tsx): ancorada ao fim do Hero, fora do fluxo */
+.liquid-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 4; /* acima do conteúdo do Hero (3) e da assinatura (4, anterior no DOM) */
+  pointer-events: none;
+}
+
+.liquid-layer svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Revelação do conteúdo de "Sobre" guiada por LiquidTransition (variável ausente = estado final) */
+.about-editorial-grid,
+.about-pillars-dark {
+  translate: 0 var(--about-shift, 0px);
+}
+
+/*
+ * Texto de "Sobre": revelação da esquerda para a direita sobre o texto já renderizado.
+ * Máscara horizontal com faixa suave; --about-text (0..1) vem de LiquidTransition e,
+ * ausente, equivale ao estado final. Cada bloco usa seu próprio atraso (--d) e piso (--dim).
+ */
+.reveal-text {
+  --d: 0;
+  --dim: 0.4;
+  --soft: 32%;
+  --local: clamp(0, calc((var(--about-text, 1) - var(--d)) / (1 - var(--d))), 1);
+  --edge1: calc(var(--local) * (100% + var(--soft)) - var(--soft));
+  --edge2: calc(var(--local) * (100% + var(--soft)));
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 var(--edge1), rgba(0, 0, 0, var(--dim)) var(--edge2), rgba(0, 0, 0, var(--dim)) 100%);
+  mask-image: linear-gradient(90deg, #000 0, #000 var(--edge1), rgba(0, 0, 0, var(--dim)) var(--edge2), rgba(0, 0, 0, var(--dim)) 100%);
+}
+
+.reveal-text--tag { --d: 0; --dim: 0.28; }
+.reveal-text--title { --d: 0.08; --dim: 0.12; --soft: 40%; }
+.reveal-text--body { --d: 0.2; --dim: 0.22; --soft: 45%; }
+.reveal-text--link { --d: 0.34; --dim: 0.28; }
+
+/* Pilares: usam o progresso próprio dos pilares (--pillars-text) e uma defasagem por coluna */
+.editorial-pillar-col:nth-child(2) { --col: 0.14; }
+.editorial-pillar-col:nth-child(3) { --col: 0.28; }
+
+.reveal-text--pillar-index,
+.reveal-text--pillar-title,
+.reveal-text--pillar-desc {
+  --about-text: var(--pillars-text, 1);
+  --soft: 45%;
+}
+
+.reveal-text--pillar-index { --d: calc(var(--col, 0) + 0); --dim: 0.28; }
+.reveal-text--pillar-title { --d: calc(var(--col, 0) + 0.04); --dim: 0.14; }
+.reveal-text--pillar-desc { --d: calc(var(--col, 0) + 0.1); --dim: 0.22; }
+
+/* Cor: parte de um azul claro e converge para a cor final junto com a máscara */
+.about-tag-row .editorial-tag.reveal-text--tag {
+  color: color-mix(in srgb, var(--color-rose) calc(var(--local) * 100%), #6593C4);
+}
+
+.about-title-light.reveal-text--title {
+  color: color-mix(in srgb, #FAF8F5 calc(var(--local) * 100%), #6593C4) !important;
+}
+
+/* Silhueta estática usada apenas pelo servidor de preview (preview-server.mjs) */
+.hero-curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 2;
+  width: 100%;
+  height: clamp(80px, 10vw, 130px);
+  pointer-events: none;
+  display: block;
+  overflow: visible;
+}
+
+.hero-curve-fill {
+  fill: #1E2D54;
+}
+
+.hero-curve-ribbon {
+  fill: none;
+  stroke: var(--color-rose);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Reflexo rosado muito suave junto à borda inferior da foto */
+.hero-tint::after {
+  content: '';
+  position: absolute;
+  right: 6%;
+  bottom: 9%;
+  width: 24%;
+  height: 20%;
+  background: radial-gradient(ellipse at center, rgba(227, 183, 206, 0.2) 0%, transparent 70%);
+}
+
+/* Identificação: texto direto sobre a área clara da foto com linha vertical à esquerda */
+.hero-signature {
+  position: absolute;
+  right: clamp(2rem, 8vw, 7rem);
+  bottom: clamp(5.5rem, 9vw, 8rem);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 0.85rem;
+  border-left: 1.5px solid rgba(51, 75, 137, 0.45);
+  text-align: left;
+}
+
+.hero-signature-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.hero-signature-role {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* Indicador DESCUBRA MAIS centralizado sobre o vale da onda */
+.hero-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.8rem, 3vw, 2.5rem);
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hero-scroll-indicator:hover {
+  transform: translate(-50%, 3px);
+  color: var(--color-primary-dark);
+}
+
+.hero-scroll-arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .hero-editorial {
+    display: block;
+    min-height: 0;
+    padding-block: 0 5.5rem;
+  }
+
+  /* Foto vira o topo da página; dissolve apenas embaixo */
+  .hero-photo {
+    position: relative;
+    width: 100%;
+    height: min(78vw, 460px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+  }
+
+  .hero-photo img {
+    object-position: 50% 20%;
+  }
+
+  .hero-tint {
+    background:
+      radial-gradient(ellipse 60% 22% at 40% 34%, rgba(101, 147, 196, 0.08) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 18% at 92% 36%, rgba(227, 183, 206, 0.1) 0%, transparent 100%);
+  }
+
+  .hero-editorial .container {
+    margin-top: -3.5rem;
+  }
+
+  .hero-main-col {
+    max-width: 100%;
+  }
+
+  .hero-signature {
+    display: none;
+  }
+
+  .hero-actions-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-pill-primary,
+  .btn-pill-secondary {
+    justify-content: center;
+  }
+}

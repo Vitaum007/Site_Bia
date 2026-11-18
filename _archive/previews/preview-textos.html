@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bia Carone | Psicóloga Clínica, Mídia & Palestras</title>
+  <meta name="description" content="Psicoterapia para adolescentes, orientação a pais e adultos em português e inglês. Participações na mídia, canal no YouTube e palestras." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-playfair: 'Playfair Display';
+      --font-jakarta: 'Plus Jakarta Sans';
+    }
+    :root {
+  /* Key Visual Official Palette — Bia Carone */
+  --bg-primary: #EFEBE8;
+  --bg-elevated: #F7F5F2;
+  --bg-accent-soft: rgba(227, 183, 206, 0.22);
+  --color-primary: #334B89;
+  --color-primary-dark: #243561;
+  --color-secondary: #6593C4;
+  --color-rose: #E3B7CE;
+  --color-rose-deep: #C98CAE;
+  --text-primary: #282828;
+  --text-muted: #605D59;
+  --text-light: #8A8680;
+  --border-subtle: rgba(51, 75, 137, 0.14);
+  --border-hairline: rgba(40, 40, 40, 0.08);
+
+  /* Typography */
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: 'Gotham', var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Editorial Spacing & Grid */
+  --page-margin: clamp(1.5rem, 5vw, 4.5rem);
+  --max-width: 1320px;
+  --section-space: clamp(6rem, 12vw, 10rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Grão tátil refinado (Key Visual) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--page-margin);
+}
+
+/* =========================================================
+   TIPOGRAFIA EDITORIAL
+   ========================================================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: -0.015em;
+}
+
+.editorial-tag {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 600;
+  display: inline-block;
+}
+
+.editorial-tag-rose {
+  color: var(--color-rose-deep);
+}
+
+.display-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5.6vw, 5.25rem);
+  line-height: 1.04;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.display-hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.section-editorial-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.75rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--color-primary);
+}
+
+.lead-prose {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.4;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.body-editorial {
+  font-size: clamp(1rem, 1.08vw, 1.125rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* =========================================================
+   BOTÕES E AÇÕES REFINADAS (Sem botões maciços de SaaS)
+   ========================================================= */
+.btn-editorial-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-primary);
+  color: #FAF8F5;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.95rem 1.85rem;
+  border: 1px solid var(--color-primary);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-editorial-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-editorial-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.95rem 1.85rem;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-editorial-outline:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(51, 75, 137, 0.04);
+  transform: translateY(-1px);
+}
+
+.text-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(51, 75, 137, 0.35);
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.text-action-link:hover {
+  border-bottom-color: var(--color-primary);
+  gap: 0.75rem;
+}
+
+/* =========================================================
+   CABEÇALHO REFINADO
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(239, 235, 232, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hairline);
+  padding-block: 1.1rem;
+  transition: all 0.25s ease;
+}
+
+.header-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.brand-signature {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1;
+  color: var(--color-primary);
+  letter-spacing: -0.015em;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  margin-top: 0.28rem;
+  text-transform: uppercase;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.header-nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.2vw, 2.25rem);
+  list-style: none;
+}
+
+.header-nav-link {
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  padding-block: 0.25rem;
+}
+
+.header-nav-link:hover {
+  color: var(--color-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.header-lang-switch a {
+  color: var(--text-light);
+  transition: color 0.2s ease;
+}
+
+.header-lang-switch a:hover,
+.header-lang-switch a.active {
+  color: var(--color-primary);
+}
+
+.header-lang-divider {
+  color: rgba(40, 40, 40, 0.2);
+  font-weight: 300;
+}
+
+.header-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #FAF8F5;
+  background-color: var(--color-primary);
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-primary);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-pill-btn:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   HERO — TEXTO À ESQUERDA, FOTOGRAFIA DISSOLVIDA NO OFF-WHITE
+   A fotografia é uma camada de fundo da seção (sem moldura): uma máscara
+   de transparência a desfaz nas bordas esquerda e inferior.
+   ========================================================= */
+.hero-editorial {
+  position: relative;
+  isolation: isolate;
+  min-height: min(calc(100vh - 78px), 780px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  padding-block: clamp(3rem, 6vw, 5rem) clamp(7rem, 13vw, 11rem);
+}
+
+/* Reflexos de cor: ficam ATRÁS da fotografia e só aparecem onde ela se dissolve */
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 38% 46% at 52% 88%, rgba(101, 147, 196, 0.13) 0%, transparent 100%),
+    radial-gradient(ellipse 26% 32% at 96% 94%, rgba(227, 183, 206, 0.16) 0%, transparent 100%);
+}
+
+.hero-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(62%, 920px);
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 46%),
+    linear-gradient(to bottom, #000 0%, #000 50%, rgba(0, 0, 0, 0.5) 72%, transparent 90%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 22%, #000 46%),
+    linear-gradient(to bottom, #000 0%, #000 50%, rgba(0, 0, 0, 0.5) 72%, transparent 90%);
+  mask-composite: intersect;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 22%;
+  display: block;
+}
+
+.hero-editorial .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: min(560px, 48%);
+}
+
+.hero-intro-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.hero-intro-label .editorial-tag {
+  color: var(--color-primary);
+  letter-spacing: 0.14em;
+}
+
+.hero-eyebrow-line {
+  display: inline-block;
+  width: 44px;
+  height: 1px;
+  background-color: rgba(51, 75, 137, 0.32);
+}
+
+.display-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.1vw, 3.9rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: -0.018em;
+}
+
+.display-hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: inherit;
+}
+
+.hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  max-width: 44ch;
+}
+
+.hero-actions-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.btn-pill-primary,
+.btn-pill-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-pill-primary {
+  background-color: var(--color-primary);
+  color: #FAF8F5;
+  border: 1px solid var(--color-primary);
+}
+
+.btn-pill-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-pill-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid rgba(51, 75, 137, 0.35);
+}
+
+.btn-pill-secondary:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(51, 75, 137, 0.05);
+}
+
+
+/* Silhueta orgânica: borda superior da seção azul seguinte */
+.hero-curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 2;
+  width: 100%;
+  height: clamp(84px, 11.5vw, 176px);
+  pointer-events: none;
+  display: block;
+}
+
+.hero-curve-fill { fill: var(--color-primary); }
+
+.hero-curve-line {
+  fill: none;
+  stroke: var(--color-rose);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.85;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Reflexo rosado muito suave junto à borda inferior da foto */
+.hero-tint::after {
+  content: '';
+  position: absolute;
+  right: 6%;
+  bottom: 9%;
+  width: 24%;
+  height: 20%;
+  background: radial-gradient(ellipse at center, rgba(227, 183, 206, 0.2) 0%, transparent 70%);
+}
+
+/* Identificação: texto direto sobre a área clara da foto, sem caixa */
+.hero-signature {
+  position: absolute;
+  right: var(--page-margin);
+  bottom: clamp(7.5rem, 14vw, 12rem);
+  z-index: 3;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hero-signature-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+
+.hero-signature-role {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .hero-editorial {
+    display: block;
+    min-height: 0;
+    padding-block: 0 5.5rem;
+  }
+
+  /* Foto vira o topo da página; dissolve apenas embaixo */
+  .hero-photo {
+    position: relative;
+    width: 100%;
+    height: min(78vw, 460px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 55%, rgba(0, 0, 0, 0.45) 82%, transparent 100%);
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+  }
+
+  .hero-photo img {
+    object-position: 60% 20%;
+  }
+
+  .hero-tint {
+    background:
+      radial-gradient(ellipse 60% 22% at 40% 34%, rgba(101, 147, 196, 0.08) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 18% at 92% 36%, rgba(227, 183, 206, 0.1) 0%, transparent 100%);
+  }
+
+  .hero-editorial .container {
+    margin-top: -3.5rem;
+  }
+
+  .hero-main-col {
+    max-width: 100%;
+  }
+
+  .hero-signature {
+    display: none;
+  }
+
+  .hero-actions-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-pill-primary,
+  .btn-pill-secondary {
+    justify-content: center;
+  }
+}
+
+/* Faixa de Credenciais e Presença — Leve e sem caixas pesadas */
+.editorial-credentials-bar {
+  margin-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-hairline);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.credential-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.credential-number {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.credential-desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   SOBRE MIM — RITMO EDITORIAL SEM CARDS
+   ========================================================= */
+.about-editorial-section {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.5rem, 8vw, 7rem) var(--section-space);
+  background-color: var(--color-primary);
+  color: #EFEBE8;
+}
+
+.about-editorial-section .editorial-tag { color: var(--color-rose); }
+.about-editorial-section .section-editorial-title { color: #FAF8F5; max-width: 14ch; }
+.about-editorial-section .lead-prose { color: #FAF8F5; }
+.about-editorial-section .body-editorial { color: rgba(239, 235, 232, 0.84); }
+.about-editorial-section .text-action-link {
+  color: #FAF8F5;
+  border-bottom-color: rgba(227, 183, 206, 0.6);
+}
+.about-editorial-section .text-action-link:hover { border-bottom-color: var(--color-rose); }
+.about-editorial-section .container { position: relative; z-index: 1; }
+
+/* Detalhes em rosa: só nas margens, assimétricos */
+.about-detail {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.about-detail-arc { top: -70px; right: -70px; width: 260px; opacity: 0.55; }
+.about-detail-line { left: 0; bottom: 2.5rem; width: min(30vw, 320px); opacity: 0.5; }
+.about-detail-dot { right: clamp(1.5rem, 6vw, 5rem); bottom: 3.25rem; width: 8px; opacity: 0.7; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-editorial-section .container {
+    animation: about-in 0.8s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+@keyframes about-in {
+  from { opacity: 0.001; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.about-editorial-header {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.about-editorial-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.about-body-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* =========================================================
+   ATENDIMENTO — LISTA EDITORIAL INTERATIVA ELEGANTE
+   ========================================================= */
+.services-editorial-section {
+  padding-block: var(--section-space);
+  background-color: var(--bg-elevated);
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.services-editorial-head {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: baseline;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.services-editorial-interactive {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.services-modalities-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.service-modality-row-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-block: 1.85rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: all 0.25s ease;
+  position: relative;
+  padding-left: 0;
+}
+
+.service-modality-row-btn:hover {
+  padding-left: 0.75rem;
+}
+
+.service-modality-row-btn[aria-selected="true"] {
+  padding-left: 1.25rem;
+}
+
+.service-modality-row-btn[aria-selected="true"]::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.85rem;
+  bottom: 1.85rem;
+  width: 2px;
+  background-color: var(--color-primary);
+}
+
+.service-modality-row-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.2;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.service-modality-row-btn[aria-selected="true"] .service-modality-row-title {
+  color: var(--color-primary);
+}
+
+.service-modality-row-freq {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+}
+
+/* Painel de Conteúdo de Atendimento (Aberto, arejado, sem cara de card de SaaS) */
+.service-details-editorial-panel {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background-color: #FAF8F5;
+  border: 1px solid rgba(51, 75, 137, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.service-details-badge {
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: var(--color-secondary);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 0.75rem;
+}
+
+.service-ideal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-block: 0.5rem;
+}
+
+.service-ideal-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.service-ideal-bullet {
+  font-family: var(--font-display);
+  color: var(--color-secondary);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+/* Passo a passo do primeiro atendimento */
+.service-steps-editorial {
+  margin-top: 4.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border-hairline);
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
+}
+
+.steps-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.step-card-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   NA MÍDIA & YOUTUBE — ARQUIVO EDITORIAL
+   ========================================================= */
+.media-archive-section {
+  padding-block: var(--section-space);
+  position: relative;
+}
+
+.media-archive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 3.5rem;
+}
+
+.media-archive-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.media-feature-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-right: clamp(1rem, 3vw, 3rem);
+  border-right: 1px solid var(--border-hairline);
+}
+
+.media-secondary-index {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-index-entry {
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--border-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: padding-left 0.2s ease;
+}
+
+.media-index-entry:hover {
+  padding-left: 0.5rem;
+}
+
+.media-entry-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.media-entry-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--color-primary);
+  font-weight: 400;
+}
+
+/* =========================================================
+   TEXTOS E REFLEXÕES — LISTAGEM EDITORIAL AUTORAL
+   ========================================================= */
+.articles-editorial-section {
+  padding-block: var(--section-space);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.articles-editorial-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  margin-top: 3.5rem;
+}
+
+.article-editorial-entry {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.article-title-editorial {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--color-primary);
+  font-weight: 400;
+}
+
+.article-title-editorial:hover {
+  color: var(--color-secondary);
+}
+
+/* =========================================================
+   CONTATO & FECHAMENTO — ACOLHEDOR E MEMORÁVEL
+   ========================================================= */
+.contact-editorial-section {
+  padding-block: var(--section-space);
+  background-color: #FAF8F5;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.contact-editorial-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.contact-channels-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-channel-block {
+  padding: 2.25rem;
+  background-color: var(--bg-primary);
+  border-left: 2px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.contact-channel-block:hover {
+  transform: translateX(4px);
+}
+
+.contact-channel-block.media-channel {
+  border-left-color: var(--color-rose-deep);
+}
+
+.contact-channel-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   RODAPÉ EDITORIAL
+   ========================================================= */
+.site-footer-editorial {
+  padding-block: 4.5rem 3rem;
+  border-top: 1px solid var(--border-hairline);
+  background-color: var(--bg-primary);
+}
+
+.footer-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.footer-huge-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 0.95;
+  color: var(--color-primary);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.footer-nav-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  padding-top: 2.5rem;
+  align-items: start;
+}
+
+.footer-legal-copy {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  max-width: 62ch;
+}
+
+/* =========================================================
+   RESPONSIVIDADE E DISPOSITIVOS MÓVEIS
+   ========================================================= */
+@media (max-width: 1024px) {
+  .hero-editorial-grid,
+  .about-editorial-header,
+  .services-editorial-interactive,
+  .media-archive-grid,
+  .contact-editorial-layout,
+  .services-editorial-head,
+  .service-steps-editorial,
+  .footer-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .media-feature-article {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 2.5rem;
+  }
+
+  .editorial-pillars-layout,
+  .steps-timeline,
+  .editorial-credentials-bar {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .header-nav {
+    display: none; /* No mobile abriremos menu ou manteremos essencial */
+  }
+
+  .header-grid {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .articles-editorial-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-actions-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-editorial-primary,
+  .btn-editorial-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-portrait-frame {
+    max-width: 100%;
+    aspect-ratio: 4 / 4.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-detail-arc, .about-detail-line { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div data-locale="pt">
+    <header class="site-header">
+      <div class="container header-grid">
+        <a href="/pt" class="brand-signature">
+          <span class="brand-title">Bia Carone</span>
+          <span class="brand-sub">Psicóloga Clínica</span>
+        </a>
+        <nav class="header-nav" aria-label="Navegação principal">
+          <ul class="header-nav-list">
+            <li><a href="/pt#sobre" class="header-nav-link">Sobre mim</a></li>
+            <li><a href="/pt#atendimento" class="header-nav-link">Atendimento</a></li>
+            <li><a href="/pt/midia" class="header-nav-link">Na mídia</a></li>
+            <li><a href="/pt/textos" class="header-nav-link">Textos</a></li>
+            <li><a href="/pt#contato" class="header-nav-link">Contato</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <div class="header-lang-switch">
+            <a href="/pt" class="active">PT</a>
+            <span class="header-lang-divider">|</span>
+            <a href="/en" class="">EN</a>
+          </div>
+          <a href="/pt#contato" class="header-pill-btn">
+            <span>Agende sua sessão</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+  <div style="padding-top:clamp(2rem, 5vw, 4rem);padding-bottom:var(--section-space)">
+    <div class="container">
+      <div style="max-width:780px;display:flex;flex-direction:column;gap:1.25rem;margin-bottom:clamp(3.5rem, 7vw, 6rem)">
+        <span class="editorial-tag">Escritos & Leituras</span>
+        <h1 class="display-hero-title" style="font-size:clamp(2.5rem, 5vw, 4.25rem)">Textos e reflexões</h1>
+        <p class="lead-prose" style="color:var(--color-primary)">Escritos pontuais sobre clínica, vínculos familiares, adolescência e vida adulta.</p>
+      </div>
+      <div class="articles-editorial-row" style="margin-top:0">
+        
+          <article class="article-editorial-entry">
+            <div style="display:flex;flex-direction:column;gap:0.9rem">
+              <span class="editorial-tag editorial-tag-rose">Adolescência & Família · Leitura de 4 min</span>
+              <h2 class="article-title-editorial"><a href="/pt/textos/escuta-na-adolescencia">O que o silêncio do adolescente tenta comunicar dentro de casa</a></h2>
+              <p class="body-editorial">[Placeholder de Texto Autoral] Uma reflexão sobre como diferenciar o recolhimento natural do amadurecimento de sinais que pedem acolhimento clínico e orientação parental.</p>
+            </div>
+            <div>
+              <a href="/pt/textos/escuta-na-adolescencia" class="btn-editorial-outline"><span>Ler texto completo</span><span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="article-editorial-entry">
+            <div style="display:flex;flex-direction:column;gap:0.9rem">
+              <span class="editorial-tag editorial-tag-rose">Clínica Bilíngue · Leitura de 3 min</span>
+              <h2 class="article-title-editorial"><a href="/pt/textos/terapia-em-dois-idiomas">Habitar dois idiomas: como a língua materna e o inglês atravessam a terapia</a></h2>
+              <p class="body-editorial">[Placeholder de Texto Autoral] Notas sobre o atendimento clínico em português e inglês e as nuances emocionais de quem vive, trabalha ou estuda entre culturas diferentes.</p>
+            </div>
+            <div>
+              <a href="/pt/textos/terapia-em-dois-idiomas" class="btn-editorial-outline"><span>Ler texto completo</span><span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+      </div>
+    </div>
+  </div></main>
+    <footer class="site-footer-editorial">
+      <div class="container">
+        <div class="footer-top-row">
+          <div class="footer-huge-name">Bia Carone</div>
+          <div class="footer-nav-row">
+            <a href="/pt/midia" class="header-nav-link">Na mídia</a>
+            <a href="/pt/textos" class="header-nav-link">Textos</a>
+            <a href="#instagram-bia-carone" class="header-nav-link">Me siga no Instagram</a>
+            <a href="#youtube-bia-carone" class="header-nav-link">Canal no YouTube</a>
+          </div>
+        </div>
+        <div class="footer-bottom-grid">
+          <div style="display:flex;flex-direction:column;gap:0.85rem">
+            <p class="lead-prose" style="font-size:1.25rem;color:var(--color-primary)">Psicologia clínica, diálogo ético e presença humana.</p>
+            <p style="font-size:0.9rem;font-weight:500;color:var(--text-primary)">Bia Carone · Psicóloga · CRP [A definir]</p>
+            <p class="footer-legal-copy">Atenção: Este site não oferece atendimento de urgência ou emergência. Em caso de crise emocional aguda, ligue 188 (CVV) ou procure o serviço de saúde mais próximo.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;align-items:flex-start">
+            <p style="font-size:0.84rem;color:var(--text-light)">© 2026 Bia Carone. Todos os direitos reservados.</p>
+            <p style="font-size:0.78rem;color:var(--text-light);letter-spacing:0.04em">Design editorial autoral · Fotografia e identidade protegidas</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

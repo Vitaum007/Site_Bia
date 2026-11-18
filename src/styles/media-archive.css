@@ -1,0 +1,67 @@
+/* =========================================================
+   NA MÍDIA & YOUTUBE — ARQUIVO EDITORIAL
+   ========================================================= */
+.media-archive-section {
+  padding-block: var(--section-space);
+  position: relative;
+}
+
+.media-archive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 3.5rem;
+}
+
+.media-archive-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.media-feature-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-right: clamp(1rem, 3vw, 3rem);
+  border-right: 1px solid var(--border-hairline);
+}
+
+.media-secondary-index {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-index-entry {
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--border-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: padding-left 0.2s ease;
+}
+
+.media-index-entry:hover {
+  padding-left: 0.5rem;
+}
+
+.media-entry-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.media-entry-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--color-primary);
+  font-weight: 400;
+}

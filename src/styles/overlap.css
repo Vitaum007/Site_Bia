@@ -1,0 +1,34 @@
+/* =========================================================
+   SOBREPOSIÇÃO ENTRE SEÇÕES — "Na mídia" sobe por cima de "Atendimento"
+   ========================================================= */
+.overlap-stack {
+  position: relative;
+}
+
+/* Camada de baixo: fica parada com o pé alinhado ao pé da tela enquanto a de cima a cobre */
+.overlap-under {
+  position: sticky;
+  top: var(--overlap-top, 0px);
+  z-index: 1;
+}
+
+/* Camada de cima: superfície opaca na cor do site, que avança com a rolagem normal */
+/* Mídia: superfície opaca que cobre Atendimento. O fundo parte do off-white e acompanha o morphing até o contato */
+.overlap-over {
+  --mp: var(--morph-p, 0);
+  position: relative;
+  z-index: 2;
+  background-color: color-mix(in oklab, var(--bg-primary) calc((1 - var(--mp)) * 100%), var(--color-secondary));
+  box-shadow: 0 -22px 44px -30px rgba(51, 75, 137, 0.28);
+}
+
+/* Celulares e movimento reduzido: sem sobreposição, as seções seguem o fluxo normal */
+@media (max-width: 699px), (prefers-reduced-motion: reduce) {
+  .overlap-under {
+    position: static;
+  }
+
+  .overlap-over {
+    box-shadow: none;
+  }
+}

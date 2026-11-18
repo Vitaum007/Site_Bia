@@ -1,0 +1,29 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Build & TypeScript cache
+/build
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env*.local
+
+# Local tooling & editor
+.claude/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# Large local reference assets (> 50 MB)
+Key Visual - Bia Carone.pdf

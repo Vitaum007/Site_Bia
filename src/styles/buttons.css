@@ -1,0 +1,27 @@
+/* =========================================================
+   BOTÕES E AÇÕES REFINADAS (Sem botões maciços de SaaS)
+   ========================================================= */
+/* Botões em selo oval (costura tracejada): definidos junto de .contact-card-action, mais abaixo */
+.btn-editorial-primary,
+.btn-editorial-outline {
+  cursor: pointer;
+}
+
+.text-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(51, 75, 137, 0.35);
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.text-action-link:hover {
+  border-bottom-color: var(--color-primary);
+  gap: 0.75rem;
+}

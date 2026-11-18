@@ -1,0 +1,183 @@
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/gotham-book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/gotham-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/gotham-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Key Visual Official Palette — Bia Carone */
+  --bg-primary: #EFEBE8;
+  --surface: #FAF8F5;
+  --color-primary: #334B89;
+  --color-primary-dark: #243561;
+  --color-secondary: #6593C4;
+  --color-rose: #E3B7CE;
+  --color-rose-deep: #A06A87;
+  --text-primary: #282828;
+  --text-muted: #605D59;
+  --text-light: #706C67;
+  --border-subtle: rgba(51, 75, 137, 0.14);
+  --border-hairline: rgba(40, 40, 40, 0.08);
+
+  /* Typography */
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: 'Gotham', var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Editorial Spacing & Grid */
+  --page-margin: clamp(1.5rem, 5vw, 4.5rem);
+  --max-width: 1320px;
+  --section-space: clamp(6rem, 12vw, 10rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Grão tátil refinado (Key Visual) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--page-margin);
+}
+
+/* =========================================================
+   TIPOGRAFIA EDITORIAL
+   ========================================================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: -0.015em;
+}
+
+.editorial-tag {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 600;
+  display: inline-block;
+}
+
+.editorial-tag-rose {
+  color: var(--color-rose-deep);
+}
+
+.display-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5.6vw, 5.25rem);
+  line-height: 1.04;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.display-hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.section-editorial-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.75rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--color-primary);
+}
+
+.lead-prose {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.4;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.body-editorial {
+  font-size: clamp(1rem, 1.08vw, 1.125rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  font-weight: 400;
+}
