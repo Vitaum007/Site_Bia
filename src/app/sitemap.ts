@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import { locales } from '@/content';
 import { SITE_URL } from '@/lib/site';
 
+export const dynamic = 'force-static';
+
 // Páginas públicas, sem o prefixo de idioma
 const PATHS = ['', '/midia'];
 const LAST_MODIFIED = new Date('2026-11-01');
