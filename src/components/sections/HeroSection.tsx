@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { SiteDictionary } from '@/content/types.ts';
+import { assetPath } from '@/lib/site';
 import { LiquidTransition } from './LiquidTransition';
 
 interface HeroSectionProps {
@@ -16,7 +17,7 @@ export function HeroSection({ dict }: HeroSectionProps) {
 
       <div className="hero-photo">
         <Image
-          src="/images/bia-hero.jpg"
+          src={assetPath('/images/bia-hero.jpg')}
           alt={locale === 'pt' ? 'Retrato de Bia Carone, psicóloga clínica' : 'Portrait of Bia Carone, clinical psychologist'}
           width={2000}
           height={2000}

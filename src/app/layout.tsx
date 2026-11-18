@@ -1,6 +1,17 @@
 import type { ReactNode } from 'react';
 import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
+
+const gotham = localFont({
+  src: [
+    { path: '../../public/fonts/gotham-book.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/gotham-medium.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/gotham-bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-gotham',
+  display: 'swap',
+});
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -21,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="pt-BR"
-      className={`${playfair.variable} ${jakarta.variable}`}
+      className={`${gotham.variable} ${playfair.variable} ${jakarta.variable}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>{children}</body>

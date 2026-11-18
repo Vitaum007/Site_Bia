@@ -5,6 +5,14 @@ import { isValidLocale, locales, type Locale } from '@/content';
 /** URL pública do site. Defina NEXT_PUBLIC_SITE_URL no ambiente de produção quando o domínio estiver confirmado. */
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://biacarone.com.br').replace(/\/$/, '');
 
+/** Prefixo de rota quando publicado em subcaminho (ex.: /Site_Bia no GitHub Pages). */
+export const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH ?? '').replace(/\/$/, '');
+
+/** Resolve caminho de asset em `public/` respeitando `BASE_PATH` (necessário com `images.unoptimized: true`). */
+export function assetPath(path: string): string {
+  return `${BASE_PATH}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
 const OG_LOCALE: Record<Locale, string> = { pt: 'pt_BR', en: 'en_US' };
 
 /** Converte o segmento [lang] em Locale; qualquer outro valor vira 404 (evita páginas duplicadas como /fr). */
